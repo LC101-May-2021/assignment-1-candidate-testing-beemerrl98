@@ -3,12 +3,12 @@ const input = require('readline-sync');
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
-let candidateName;
+let candidateName = "";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question = "1) Who was the first American woman in space? ";
+let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
-let candidateAnswer = " ";
-let questions = ["1) Who was the first American woman in space? " , "2) True or false: 5 kilometers == 5000 meters? ", "3) (5 + 3)/2 * 10 = ? ", "4) Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "5) What is the minimum crew size for the ISS? "];
+let candidateAnswer = "";
+let questions = ["Who was the first American woman in space? " , "True or false: 5 kilometers == 5000 meters? ", "(5 + 3)/2 * 10 = ? ", "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "What is the minimum crew size for the ISS? "];
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers = [];
 
@@ -16,7 +16,6 @@ let candidateAnswers = [];
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
   candidateName = input.question('Dear Candidate, please enter your name: ');
-  console.log(`Greetings ${candidateName}. Welcome to the Entry Exam.\n`);
 }
 
 function askQuestion() {
@@ -24,16 +23,24 @@ function askQuestion() {
   
   //candidateAnswer = input.question(question);
 
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < questions.length; i++) {
     candidateAnswers[i] = input.question(questions[i]);
-    console.log(`Your answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}.\n`);
   }
-  
 }
 
 
 function gradeQuiz(candidateAnswers) {
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
+
+for (let i = 0; i < questions.length; i++) {
+  console.log(`Your answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
+}
+
+// if (candidateAnswer === correctAnswer) {
+//   console.log('Correct!');
+// } else {
+//   console.log('Incorrect!');
+// }
 
 let grade = 0;
 let finalGrade;
@@ -54,38 +61,13 @@ for (let i = 0; i < 5; i++) {
    console.log(`>>> Congratulations ${candidateName}, you passed!`);
  }
 
-
-
-/*
-let numCorrect = 0;
-let numIncorrect = questions.length - numCorrect; 
-
-for (i = 0; i < 5; i++) {
-    if (correctAnswers[i] === candidateAnswers[i]) {
-      numCorrect += 1;
-    }
-    
-  }
-  */
-
-
-/*
-if(candidateAnswer === "Sally Ride") {
-  grade = 100;
-  console.log(`Correct! Your score is ${grade}%`);
-} else {
-  grade = 0;
-  console.log(`Incorrect. Your score is ${grade}%.`);
-}
-*/
-
   return grade;
 }
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  
+  console.log(`Greetings ${candidateName}. Welcome to the Entry Exam.\n`);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
