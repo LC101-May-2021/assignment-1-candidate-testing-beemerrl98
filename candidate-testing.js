@@ -33,7 +33,7 @@ function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
 
 for (let i = 0; i < questions.length; i++) {
-  console.log(`Your answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
+  console.log(`${i+1}) Your answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
 }
 
 // if (candidateAnswer === correctAnswer) {
@@ -42,20 +42,21 @@ for (let i = 0; i < questions.length; i++) {
 //   console.log('Incorrect!');
 // }
 
-let grade = 0;
+let grade;
 let finalGrade;
+let numCorrect = 0;
 //console.log(correctAnswers);
 //console.log(candidateAnswers);
 
 for (let i = 0; i < 5; i++) {
   if (candidateAnswers[i] == correctAnswers[i]) {
-    grade = grade + 1; 
-    finalGrade = (grade/questions.length) * 100;
+    numCorrect = numCorrect + 1; 
+    grade = (numCorrect/questions.length) * 100;
   }
 }
- console.log(`>>> Overall Grade: ${finalGrade}% (${grade} out of ${questions.length} responses correct) <<<`)
+ console.log(`>>> Overall Grade: ${grade}% (${numCorrect} out of ${questions.length} responses correct) <<<`)
 
- if (finalGrade < 80) {
+ if (grade < 80) {
    console.log(">>> Status: FAILED <<<");
  } else {
    console.log(`>>> Congratulations ${candidateName}, you passed!`);
