@@ -48,7 +48,7 @@ let numCorrect = 0;
 //console.log(candidateAnswers);
 
 for (let i = 0; i < 5; i++) {
-  if (candidateAnswers[i] == correctAnswers[i]) {
+  if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()) {
     numCorrect += 1; 
      grade = (numCorrect/questions.length) * 100;
   }
