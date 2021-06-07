@@ -50,9 +50,14 @@ let numCorrect = 0;
 for (let i = 0; i < 5; i++) {
   if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()) {
     numCorrect += 1; 
-     grade = (numCorrect/questions.length) * 100;
+    grade = (numCorrect/questions.length) * 100;
   }
 }
+
+if (typeof grade === 'undefined'){
+  grade = 0;
+}
+
  console.log(`>>> Overall Grade: ${grade}% (${numCorrect} out of ${questions.length} responses correct) <<<`)
 
  if (grade < 80) {
@@ -61,7 +66,7 @@ for (let i = 0; i < 5; i++) {
    console.log(`>>> Congratulations ${candidateName}, you passed!`);
  }
 
-  return grade;
+ return grade;
 }
 
 function runProgram() {
