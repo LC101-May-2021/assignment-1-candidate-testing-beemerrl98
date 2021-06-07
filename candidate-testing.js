@@ -48,7 +48,7 @@ let finalGrade;
 //console.log(candidateAnswers);
 
 for (let i = 0; i < 5; i++) {
-  if (candidateAnswers[i] === correctAnswers[i]) {
+  if (candidateAnswers[i] == correctAnswers[i]) {
     grade = grade + 1; 
     finalGrade = (grade/questions.length) * 100;
   }
